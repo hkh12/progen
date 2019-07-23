@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-import cli from 'commander';
-import prompts from 'prompts';
-import ora from 'ora';
-import cloneRepo from '../src/clone';
-import packageJson from '../package.json';
+const ora = require('ora');
+const cli = require('commander');
+const prompts = require('prompts');
+const cloneRepo = require('../src/clone');
+const { version: VERSION } = require('../package.json');
 
 cli.name('pro')
-  .version(packageJson.version)
+  .version(VERSION)
   .arguments('<lang> <dir>')
   .action(async (lang, dir) => {
     const { template } = await prompts({
