@@ -16,12 +16,12 @@ cli.name('pro')
       initial: 'hkh12/progen'
     });
     if (!template) process.exit();
-    try {
       const spinner = ora('Cloning from GitHub...').start();
+    try {
       await cloneRepo(template, dir);
-      spinner.stopAndPersist();
+      spinner.succeed('Cloned.');
     } catch ({ message }) {
-      console.log(message);
+      spinner.fail(`Error: ${message}`);
     }
   })
   .parse(process.argv);
